@@ -11,11 +11,11 @@ beforeAll(async () => {
         fs.chmodSync(`${tmpdir}/proxyboi-linux-amd64`, "755");
         process.env["INPUT_FILE"] = `${tmpdir}/proxyboi-linux-amd64`
     } else if (os.type() == "Darwin") {
-        await download('https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-macos-amd64', tmpdir);
+        await download.default('https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-macos-amd64', tmpdir);
         fs.chmodSync(`${tmpdir}/proxyboi-macos-amd64`, "755");
         process.env["INPUT_FILE"] = `${tmpdir}/proxyboi-macos-amd64`
     } else if (os.type() == "Windows_NT") {
-        await download('https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-windows-amd64.exe', tmpdir);
+        await download.default('https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-windows-amd64.exe', tmpdir);
         process.env["INPUT_FILE"] = `${tmpdir}/proxyboi-windows-amd64.exe`
     }
 });
