@@ -20,7 +20,8 @@ async function compileUpx() {
 
 async function runUpx(file: string) {
     child_process.execSync(`strip ${file}`);
-    child_process.execSync(`upx/src/upx.out ${file}`);
+    // child_process.execSync(`upx/src/upx.out ${file}`);
+    child_process.execSync(`upx ${file}`);
 }
 
 export async function run() {
@@ -31,7 +32,7 @@ export async function run() {
             core.setFailed(`File ${file} wasn't found.`);
         }
 
-        await compileUpx();
+        // await compileUpx();
         await runUpx(file);
     } catch (error) {
         core.setFailed(error.message);
