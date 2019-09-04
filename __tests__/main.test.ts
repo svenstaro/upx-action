@@ -1,10 +1,11 @@
 import * as fs from 'fs';
 import * as os from 'os';
 import * as download from 'download';
+import * as path from 'path';
 import { run } from '../src/action';
 
 beforeAll(async () => {
-    const tmpdir = fs.mkdtempSync("upx-action");
+    const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), "upx-action-"));
     if (os.type() == "Linux") {
         await download.default('https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-linux-amd64', tmpdir);
         fs.chmodSync(`${tmpdir}/proxyboi-linux-amd64`, "755");
@@ -21,7 +22,7 @@ beforeAll(async () => {
 
 describe('UPX Action', () => {
     it('can compress stuff', async () => {
-        const file_path = process.env["INPUT_FILE"];
+        const file_path = process.env["INPUT_FILE"] as string;
         const old_size = fs.statSync(file_path).size;
         await run();
         const new_size = fs.statSync(file_path).size;

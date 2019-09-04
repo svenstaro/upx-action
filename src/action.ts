@@ -3,9 +3,10 @@ import * as os from 'os';
 import * as child_process from 'child_process';
 import * as core from '@actions/core';
 import * as download from 'download';
+import * as path from 'path';
 
 async function downloadUpx(): Promise<string> {
-    const tmpdir = fs.mkdtempSync("upx-action");
+    const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), "upx-action-"));
     if (os.type() == "Linux") {
         await download.default('https://github.com/upx/upx-automatic-builds/blob/devel-20190303-16bfa7b-travis/amd64-linux-gcc-8-release/upx-git-16bfa7b846cf.out?raw=true', tmpdir, { filename: "upx" });
         const upx_path = `${tmpdir}/upx`;
