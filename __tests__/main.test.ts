@@ -2,7 +2,11 @@ import * as fs from 'fs';
 import { run } from '../src/action';
 
 beforeEach(() => {
-    fs.unlinkSync("upx/src/upx.out");
+    fs.unlink("upx/src/upx.out", err => {
+        if(err && err.code != 'ENOENT') {
+            throw err;
+        }
+    });
 });
 
 describe('UPX Action', () => {
