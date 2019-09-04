@@ -15,8 +15,8 @@ jobs:
       if: matrix.os == 'windows-latest'
       run: choco install upx
 
-    - name: "install on osx"
-      if: matrix.os == 'osx-latest'
+    - name: "install on macos"
+      if: matrix.os == 'macos-latest'
       run: brew install upx
 
     - name: "install on ubuntu"
