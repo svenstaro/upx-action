@@ -11,7 +11,7 @@ async function compileUpx() {
         core.debug(pull_out.toString());
     } else {
         // Yes, this assumes that devel is always good. UPX seems very stable so we'll take the gamble.
-        const clone_out = child_process.execSync("git clone --recursive --single-branch --branch devel git@github.com:upx/upx.git");
+        const clone_out = child_process.execSync("git clone --recursive --single-branch --branch devel https://github.com/upx/upx.git");
         core.debug(clone_out.toString());
     }
     const make_out = child_process.execSync(`make all -j${os.cpus().length}`, { cwd: "upx" });
