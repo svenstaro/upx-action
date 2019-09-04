@@ -1,0 +1,13 @@
+name: 'Strip and run UPX on executables'
+description: 'Dramatically decreases size of executables by stripping them of debug symbols and running UPX on them'
+author: 'Sven-Hendrik Haase'
+branding:
+  icon: file-minus
+  color: blue
+inputs:
+  file:
+    description: 'Local file to pack'
+    required: true
+runs:
+  using: 'node12'
+  main: 'lib/main.js'
