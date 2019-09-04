@@ -21,6 +21,7 @@ jobs:
 
     - name: "check for uncommitted changes"
       # Ensure no changes, but ignore node_modules dir since dev/fresh ci deps installed.
+      if: matrix.os == 'ubuntu-latest'
       run: |
         git diff --exit-code --stat -- . ':!node_modules' \
         || (echo "##[error] found changed files after build. please 'npm run build && npm run format'" \
