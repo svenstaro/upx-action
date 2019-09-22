@@ -5,9 +5,8 @@ It runs on all operating systems types offered by GitHub.
 
 ## Input variables
 
-You must provide:
-
-- `file`: The file you want to compress. It's compressed in-place.
+* `file`: The file you want to compress. It's compressed in-place. **required**
+* `args`: Arguments to pass to UPX. *optional*
 
 ## Usage
 
