@@ -10,6 +10,11 @@ inputs:
     required: true
   args:
     description: 'Arguments to pass to UPX'
+  strip:
+    description: 'Whether or not "strip" symbols from object file'
+    default: 'true'
+  strip_args:
+    description: 'Arguments to pass to strip'
 runs:
   using: 'node12'
   main: 'lib/main.js'

@@ -30,12 +30,22 @@ export async function run() {
     try {
         const file = core.getInput('file', { required: true });
         const args = core.getInput('args');
+        const strip = core.getInput('strip');
+        const strip_args = core.getInput('strip_args');
 
         if (!fs.existsSync(file)) {
-            core.setFailed(`File ${file} wasn't found.`);
+            core.setFailed(`⛔ File ${file} wasn't found.`);
         }
 
+        if (/true/i.test(strip)) {
+            console.log('🏃 Running strip...');
+            await exec.exec(`strip ${strip_args} ${file}`);
+        }
+
+        console.log('⬇️ Downloading UPX...');
         const upx_path = await downloadUpx();
+
+        console.log('🏃 Running UPX...');
         await exec.exec(`${upx_path} ${args} ${file}`);
     } catch (error) {
         core.setFailed(error.message);
