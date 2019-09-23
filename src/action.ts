@@ -38,14 +38,14 @@ export async function run() {
         }
 
         if (/true/i.test(strip)) {
-            console.log('🏃 Running strip...');
+            core.info('🏃 Running strip...');
             await exec.exec(`strip ${strip_args} ${file}`);
         }
 
-        console.log('⬇️ Downloading UPX...');
+        core.info('⬇️ Downloading UPX...');
         const upx_path = await downloadUpx();
 
-        console.log('🏃 Running UPX...');
+        core.info('🏃 Running UPX...');
         await exec.exec(`${upx_path} ${args} ${file}`);
     } catch (error) {
         core.setFailed(error.message);
