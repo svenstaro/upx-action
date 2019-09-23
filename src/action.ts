@@ -30,7 +30,7 @@ export async function run() {
     try {
         const file = core.getInput('file', { required: true });
         const args = core.getInput('args');
-        const strip = core.getInput('strip');
+        const strip = core.getInput('strip') || 'true';
         const strip_args = core.getInput('strip_args');
 
         if (!fs.existsSync(file)) {
