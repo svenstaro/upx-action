@@ -7,7 +7,7 @@ It runs on all operating systems types offered by GitHub.
 
 * `file`: The file you want to compress. It's compressed in-place. **required**
 * `args`: Arguments to pass to UPX. *optional*
-* `strip`: Whether or not "strip" symbols from object file. *optional*
+* `strip`: Whether or not "strip" symbols from object file (default `true`). *optional*
 * `strip_args`: Arguments to pass to strip. *optional*
 
 ## Usage
