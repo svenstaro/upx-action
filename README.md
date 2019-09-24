@@ -40,4 +40,7 @@ jobs:
       uses: svenstaro/upx-action@v1-release
       with:
         file: target/release/mything
+        args: --brute # try all available compression methods & filters for UPX
+        strip: false # don't strip before UPX
+        strip_args: -p # preserve dates
 ```
