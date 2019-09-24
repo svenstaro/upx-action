@@ -28,7 +28,6 @@ jobs:
   build:
     name: Publish binaries
     runs-on: ubuntu-latest
-
     steps:
     - uses: hecrj/setup-rust-action@v1-release
       with:
@@ -40,7 +39,48 @@ jobs:
       uses: svenstaro/upx-action@v1-release
       with:
         file: target/release/mything
-        args: --brute # try all available compression methods & filters for UPX
-        strip: false # don't strip before UPX
-        strip_args: -p # preserve dates
+```
+
+Complex example with more operating systems and inputs:
+
+```yaml
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Publish binaries for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            file: target/release/mything
+            args: --better
+            strip: true
+          - os: windows-latest
+            file: target/release/mything.exe
+            args: -9
+            strip: false
+          - os: macos-latest
+            file: target/release/mything
+            args: --better
+            strip: true
+    steps:
+    - uses: hecrj/setup-rust-action@v1-release
+      with:
+        rust-version: stable
+    - uses: actions/checkout@v1
+    - name: Build
+      run: cargo build --release --locked
+    - name: Compress binaries
+      uses: svenstaro/upx-action@v1-release
+      with:
+        file: ${{ matrix.file }}
+        args: ${{ matrix.args }}
+        strip: ${{ matrix.strip }}
 ```
