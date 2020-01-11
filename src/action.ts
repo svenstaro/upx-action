@@ -8,17 +8,17 @@ import * as path from 'path';
 async function downloadUpx(): Promise<string> {
     const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), "upx-action-"));
     if (os.type() == "Linux") {
-        await download.default('https://github.com/upx/upx-automatic-builds/blob/devel-20190303-16bfa7b-travis/amd64-linux-gcc-8-release/upx-git-16bfa7b846cf.out?raw=true', tmpdir, { filename: "upx" });
+        await download.default('https://github.com/upx/upx-automatic-builds/blob/devel-20200108-0f4975f-travis/amd64-linux-gcc-9-release/upx-git-0f4975fd7ffb.out?raw=true', tmpdir, { filename: "upx" });
         const upx_path = `${tmpdir}/upx`;
         fs.chmodSync(upx_path, "755");
         return upx_path;
     } else if (os.type() == "Darwin") {
-        await download.default('https://github.com/upx/upx-automatic-builds/blob/devel-20190303-16bfa7b-travis/amd64-darwin-clang-1000-release/upx-git-16bfa7b846cf.out?raw=true', tmpdir, { filename: "upx" });
+        await download.default('https://github.com/upx/upx-automatic-builds/blob/devel-20200108-0f4975f-travis/amd64-darwin-clang-1100-release/upx-git-0f4975fd7ffb.out?raw=true', tmpdir, { filename: "upx" });
         const upx_path = `${tmpdir}/upx`;
         fs.chmodSync(upx_path, "755");
         return upx_path;
     } else if (os.type() == "Windows_NT") {
-        await download.default('https://github.com/upx/upx-automatic-builds/blob/devel-20190303-570b2d0-appveyor/amd64-win64-msvc-14.1-release/upx-git-570b2d0e88d1.exe?raw=true', tmpdir, { filename: "upx.exe" });
+        await download.default('https://github.com/upx/upx-automatic-builds/blob/devel-20200108-0f4975f-appveyor/amd64-win64-msvc-14.1-release/upx-git-0f4975fd7ffb.exe?raw=true', tmpdir, { filename: "upx.exe" });
         const upx_path = `${tmpdir}/upx.exe`;
         fs.chmodSync(upx_path, "755");
         return upx_path;
