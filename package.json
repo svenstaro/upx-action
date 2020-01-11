@@ -22,8 +22,8 @@
   "author": "Sven-Hendrik Haase",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.1.1",
-    "@actions/exec": "^1.0.1",
+    "@actions/core": "^1.2.1",
+    "@actions/exec": "^1.0.3",
     "download": "^7.1.0"
   },
   "devDependencies": {
