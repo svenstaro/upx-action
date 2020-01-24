@@ -6,7 +6,7 @@
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest --testTimeout=60000"
   },
   "repository": {
     "type": "git",
