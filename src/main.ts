@@ -1,3 +1,3 @@
-import { run } from './action';
+import {run} from './action'
 
-run();
+run()

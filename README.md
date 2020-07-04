@@ -29,14 +29,11 @@ jobs:
     name: Publish binaries
     runs-on: ubuntu-latest
     steps:
-    - uses: hecrj/setup-rust-action@v1-release
-      with:
-        rust-version: stable
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build
       run: cargo build --release --locked
     - name: Compress binaries
-      uses: svenstaro/upx-action@v1-release
+      uses: svenstaro/upx-action@v2
       with:
         file: target/release/mything
 ```
@@ -71,14 +68,11 @@ jobs:
             args: --better
             strip: true
     steps:
-    - uses: hecrj/setup-rust-action@v1-release
-      with:
-        rust-version: stable
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build
       run: cargo build --release --locked
     - name: Compress binaries
-      uses: svenstaro/upx-action@v1-release
+      uses: svenstaro/upx-action@v2
       with:
         file: ${{ matrix.file }}
         args: ${{ matrix.args }}
