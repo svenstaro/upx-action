@@ -30,7 +30,7 @@
     "@actions/core": "^1.2.4",
     "@actions/exec": "^1.0.4",
     "decompress-tarxz": "^3.0.0",
-    "download": "^7.1.0"
+    "download": "^8.0.0"
   },
   "devDependencies": {
     "@types/download": "^6.2.4",
