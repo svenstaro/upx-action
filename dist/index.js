@@ -12417,7 +12417,7 @@ function objectToString(o) {
 /* 292 */
 /***/ (function(module) {
 
-module.exports = {"_from":"node-pre-gyp@^0.11.0","_id":"node-pre-gyp@0.11.0","_inBundle":false,"_integrity":"sha512-TwWAOZb0j7e9eGaf9esRx3ZcLaE5tQ2lvYy1pb5IAaG1a2e2Kv5Lms1Y4hpj+ciXJRofIxxlt5haeQ/2ANeE0Q==","_location":"/node-pre-gyp","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"node-pre-gyp@^0.11.0","name":"node-pre-gyp","escapedName":"node-pre-gyp","rawSpec":"^0.11.0","saveSpec":null,"fetchSpec":"^0.11.0"},"_requiredBy":["/lzma-native"],"_resolved":"https://registry.npmjs.org/node-pre-gyp/-/node-pre-gyp-0.11.0.tgz","_shasum":"db1f33215272f692cd38f03238e3e9b47c5dd054","_spec":"node-pre-gyp@^0.11.0","_where":"/home/svenstaro/prj/upx-action/node_modules/lzma-native","author":{"name":"Dane Springmeyer","email":"dane@mapbox.com"},"bin":{"node-pre-gyp":"bin/node-pre-gyp"},"bugs":{"url":"https://github.com/mapbox/node-pre-gyp/issues"},"bundleDependencies":false,"dependencies":{"detect-libc":"^1.0.2","mkdirp":"^0.5.1","needle":"^2.2.1","nopt":"^4.0.1","npm-packlist":"^1.1.6","npmlog":"^4.0.2","rc":"^1.2.7","rimraf":"^2.6.1","semver":"^5.3.0","tar":"^4"},"deprecated":false,"description":"Node.js native addon binary install tool","devDependencies":{"aws-sdk":"^2.28.0","jshint":"^2.9.5","nock":"^9.2.3","tape":"^4.6.3"},"homepage":"https://github.com/mapbox/node-pre-gyp#readme","jshintConfig":{"node":true,"globalstrict":true,"undef":true,"unused":false,"noarg":true},"keywords":["native","addon","module","c","c++","bindings","binary"],"license":"BSD-3-Clause","main":"./lib/node-pre-gyp.js","name":"node-pre-gyp","repository":{"type":"git","url":"git://github.com/mapbox/node-pre-gyp.git"},"scripts":{"pretest":"jshint test/build.test.js test/s3_setup.test.js test/versioning.test.js test/fetch.test.js lib lib/util scripts bin/node-pre-gyp","test":"jshint lib lib/util scripts bin/node-pre-gyp && tape test/*test.js","update-crosswalk":"node scripts/abi_crosswalk.js"},"version":"0.11.0"};
+module.exports = {"_args":[["node-pre-gyp@0.11.0","/home/svenstaro/prj/upx-action"]],"_from":"node-pre-gyp@0.11.0","_id":"node-pre-gyp@0.11.0","_inBundle":false,"_integrity":"sha512-TwWAOZb0j7e9eGaf9esRx3ZcLaE5tQ2lvYy1pb5IAaG1a2e2Kv5Lms1Y4hpj+ciXJRofIxxlt5haeQ/2ANeE0Q==","_location":"/node-pre-gyp","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"node-pre-gyp@0.11.0","name":"node-pre-gyp","escapedName":"node-pre-gyp","rawSpec":"0.11.0","saveSpec":null,"fetchSpec":"0.11.0"},"_requiredBy":["/lzma-native"],"_resolved":"https://registry.npmjs.org/node-pre-gyp/-/node-pre-gyp-0.11.0.tgz","_spec":"0.11.0","_where":"/home/svenstaro/prj/upx-action","author":{"name":"Dane Springmeyer","email":"dane@mapbox.com"},"bin":{"node-pre-gyp":"bin/node-pre-gyp"},"bugs":{"url":"https://github.com/mapbox/node-pre-gyp/issues"},"dependencies":{"detect-libc":"^1.0.2","mkdirp":"^0.5.1","needle":"^2.2.1","nopt":"^4.0.1","npm-packlist":"^1.1.6","npmlog":"^4.0.2","rc":"^1.2.7","rimraf":"^2.6.1","semver":"^5.3.0","tar":"^4"},"description":"Node.js native addon binary install tool","devDependencies":{"aws-sdk":"^2.28.0","jshint":"^2.9.5","nock":"^9.2.3","tape":"^4.6.3"},"homepage":"https://github.com/mapbox/node-pre-gyp#readme","jshintConfig":{"node":true,"globalstrict":true,"undef":true,"unused":false,"noarg":true},"keywords":["native","addon","module","c","c++","bindings","binary"],"license":"BSD-3-Clause","main":"./lib/node-pre-gyp.js","name":"node-pre-gyp","repository":{"type":"git","url":"git://github.com/mapbox/node-pre-gyp.git"},"scripts":{"pretest":"jshint test/build.test.js test/s3_setup.test.js test/versioning.test.js test/fetch.test.js lib lib/util scripts bin/node-pre-gyp","test":"jshint lib lib/util scripts bin/node-pre-gyp && tape test/*test.js","update-crosswalk":"node scripts/abi_crosswalk.js"},"version":"0.11.0"};
 
 /***/ }),
 /* 293 */
@@ -17341,7 +17341,7 @@ module.exports = function (obj) {
 /* 482 */
 /***/ (function(module) {
 
-module.exports = {"_from":"got@^8.3.1","_id":"got@8.3.2","_inBundle":false,"_integrity":"sha512-qjUJ5U/hawxosMryILofZCkm3C84PLJS/0grRIpjAwu+Lkxxj5cxeCU25BG0/3mDSpXKTyZr8oh8wIgLaH0QCw==","_location":"/got","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"got@^8.3.1","name":"got","escapedName":"got","rawSpec":"^8.3.1","saveSpec":null,"fetchSpec":"^8.3.1"},"_requiredBy":["/download"],"_resolved":"https://registry.npmjs.org/got/-/got-8.3.2.tgz","_shasum":"1d23f64390e97f776cac52e5b936e5f514d2e937","_spec":"got@^8.3.1","_where":"/home/svenstaro/prj/upx-action/node_modules/download","ava":{"concurrency":4},"browser":{"decompress-response":false,"electron":false},"bugs":{"url":"https://github.com/sindresorhus/got/issues"},"bundleDependencies":false,"dependencies":{"@sindresorhus/is":"^0.7.0","cacheable-request":"^2.1.1","decompress-response":"^3.3.0","duplexer3":"^0.1.4","get-stream":"^3.0.0","into-stream":"^3.1.0","is-retry-allowed":"^1.1.0","isurl":"^1.0.0-alpha5","lowercase-keys":"^1.0.0","mimic-response":"^1.0.0","p-cancelable":"^0.4.0","p-timeout":"^2.0.1","pify":"^3.0.0","safe-buffer":"^5.1.1","timed-out":"^4.0.1","url-parse-lax":"^3.0.0","url-to-options":"^1.0.1"},"deprecated":false,"description":"Simplified HTTP requests","devDependencies":{"ava":"^0.25.0","coveralls":"^3.0.0","form-data":"^2.1.1","get-port":"^3.0.0","nyc":"^11.0.2","p-event":"^1.3.0","pem":"^1.4.4","proxyquire":"^1.8.0","sinon":"^4.0.0","slow-stream":"0.0.4","tempfile":"^2.0.0","tempy":"^0.2.1","universal-url":"1.0.0-alpha","xo":"^0.20.0"},"engines":{"node":">=4"},"files":["index.js","errors.js"],"homepage":"https://github.com/sindresorhus/got#readme","keywords":["http","https","get","got","url","uri","request","util","utility","simple","curl","wget","fetch","net","network","electron"],"license":"MIT","maintainers":[{"name":"Sindre Sorhus","email":"sindresorhus@gmail.com","url":"sindresorhus.com"},{"name":"Vsevolod Strukchinsky","email":"floatdrop@gmail.com","url":"github.com/floatdrop"},{"name":"Alexander Tesfamichael","email":"alex.tesfamichael@gmail.com","url":"alextes.me"}],"name":"got","repository":{"type":"git","url":"git+https://github.com/sindresorhus/got.git"},"scripts":{"coveralls":"nyc report --reporter=text-lcov | coveralls","test":"xo && nyc ava"},"version":"8.3.2"};
+module.exports = {"_args":[["got@8.3.2","/home/svenstaro/prj/upx-action"]],"_from":"got@8.3.2","_id":"got@8.3.2","_inBundle":false,"_integrity":"sha512-qjUJ5U/hawxosMryILofZCkm3C84PLJS/0grRIpjAwu+Lkxxj5cxeCU25BG0/3mDSpXKTyZr8oh8wIgLaH0QCw==","_location":"/got","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"got@8.3.2","name":"got","escapedName":"got","rawSpec":"8.3.2","saveSpec":null,"fetchSpec":"8.3.2"},"_requiredBy":["/download"],"_resolved":"https://registry.npmjs.org/got/-/got-8.3.2.tgz","_spec":"8.3.2","_where":"/home/svenstaro/prj/upx-action","ava":{"concurrency":4},"browser":{"decompress-response":false,"electron":false},"bugs":{"url":"https://github.com/sindresorhus/got/issues"},"dependencies":{"@sindresorhus/is":"^0.7.0","cacheable-request":"^2.1.1","decompress-response":"^3.3.0","duplexer3":"^0.1.4","get-stream":"^3.0.0","into-stream":"^3.1.0","is-retry-allowed":"^1.1.0","isurl":"^1.0.0-alpha5","lowercase-keys":"^1.0.0","mimic-response":"^1.0.0","p-cancelable":"^0.4.0","p-timeout":"^2.0.1","pify":"^3.0.0","safe-buffer":"^5.1.1","timed-out":"^4.0.1","url-parse-lax":"^3.0.0","url-to-options":"^1.0.1"},"description":"Simplified HTTP requests","devDependencies":{"ava":"^0.25.0","coveralls":"^3.0.0","form-data":"^2.1.1","get-port":"^3.0.0","nyc":"^11.0.2","p-event":"^1.3.0","pem":"^1.4.4","proxyquire":"^1.8.0","sinon":"^4.0.0","slow-stream":"0.0.4","tempfile":"^2.0.0","tempy":"^0.2.1","universal-url":"1.0.0-alpha","xo":"^0.20.0"},"engines":{"node":">=4"},"files":["index.js","errors.js"],"homepage":"https://github.com/sindresorhus/got#readme","keywords":["http","https","get","got","url","uri","request","util","utility","simple","curl","wget","fetch","net","network","electron"],"license":"MIT","maintainers":[{"name":"Sindre Sorhus","email":"sindresorhus@gmail.com","url":"sindresorhus.com"},{"name":"Vsevolod Strukchinsky","email":"floatdrop@gmail.com","url":"github.com/floatdrop"},{"name":"Alexander Tesfamichael","email":"alex.tesfamichael@gmail.com","url":"alextes.me"}],"name":"got","repository":{"type":"git","url":"git+https://github.com/sindresorhus/got.git"},"scripts":{"coveralls":"nyc report --reporter=text-lcov | coveralls","test":"xo && nyc ava"},"version":"8.3.2"};
 
 /***/ }),
 /* 483 */,
@@ -20635,7 +20635,7 @@ if (process.env.READABLE_STREAM === 'disable' && Stream) {
 /* 578 */
 /***/ (function(module) {
 
-module.exports = {"_from":"seek-bzip@^1.0.5","_id":"seek-bzip@1.0.5","_inBundle":false,"_integrity":"sha1-z+kXyz0nS8/6x5J1ivUxc+sfq9w=","_location":"/seek-bzip","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"seek-bzip@^1.0.5","name":"seek-bzip","escapedName":"seek-bzip","rawSpec":"^1.0.5","saveSpec":null,"fetchSpec":"^1.0.5"},"_requiredBy":["/decompress-tarbz2"],"_resolved":"https://registry.npmjs.org/seek-bzip/-/seek-bzip-1.0.5.tgz","_shasum":"cfe917cb3d274bcffac792758af53173eb1fabdc","_spec":"seek-bzip@^1.0.5","_where":"/home/svenstaro/prj/upx-action/node_modules/decompress-tarbz2","bin":{"seek-bunzip":"bin/seek-bunzip","seek-table":"bin/seek-bzip-table"},"bugs":{"url":"https://github.com/cscott/seek-bzip/issues"},"bundleDependencies":false,"contributors":[{"name":"C. Scott Ananian","url":"http://cscott.net"},{"name":"Eli Skeggs"},{"name":"Kevin Kwok"},{"name":"Rob Landley","url":"http://landley.net"}],"dependencies":{"commander":"~2.8.1"},"deprecated":false,"description":"a pure-JavaScript Node.JS module for random-access decoding bzip2 data","devDependencies":{"fibers":"~1.0.6","mocha":"~2.2.5"},"directories":{"test":"test"},"homepage":"https://github.com/cscott/seek-bzip#readme","license":"MIT","main":"./lib/index.js","name":"seek-bzip","repository":{"type":"git","url":"git+https://github.com/cscott/seek-bzip.git"},"scripts":{"test":"mocha"},"version":"1.0.5"};
+module.exports = {"_args":[["seek-bzip@1.0.5","/home/svenstaro/prj/upx-action"]],"_from":"seek-bzip@1.0.5","_id":"seek-bzip@1.0.5","_inBundle":false,"_integrity":"sha1-z+kXyz0nS8/6x5J1ivUxc+sfq9w=","_location":"/seek-bzip","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"seek-bzip@1.0.5","name":"seek-bzip","escapedName":"seek-bzip","rawSpec":"1.0.5","saveSpec":null,"fetchSpec":"1.0.5"},"_requiredBy":["/decompress-tarbz2"],"_resolved":"https://registry.npmjs.org/seek-bzip/-/seek-bzip-1.0.5.tgz","_spec":"1.0.5","_where":"/home/svenstaro/prj/upx-action","bin":{"seek-bunzip":"bin/seek-bunzip","seek-table":"bin/seek-bzip-table"},"bugs":{"url":"https://github.com/cscott/seek-bzip/issues"},"contributors":[{"name":"C. Scott Ananian","url":"http://cscott.net"},{"name":"Eli Skeggs"},{"name":"Kevin Kwok"},{"name":"Rob Landley","url":"http://landley.net"}],"dependencies":{"commander":"~2.8.1"},"description":"a pure-JavaScript Node.JS module for random-access decoding bzip2 data","devDependencies":{"fibers":"~1.0.6","mocha":"~2.2.5"},"directories":{"test":"test"},"homepage":"https://github.com/cscott/seek-bzip#readme","license":"MIT","main":"./lib/index.js","name":"seek-bzip","repository":{"type":"git","url":"git+https://github.com/cscott/seek-bzip.git"},"scripts":{"test":"mocha"},"version":"1.0.5"};
 
 /***/ }),
 /* 579 */,
@@ -23550,7 +23550,12 @@ module.exports.win32 = win32;
 
 
 /***/ }),
-/* 682 */,
+/* 682 */
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+module.exports = require(__webpack_require__.ab + "binding-v4.0.6-node-v72-linux-x64/lzma_native.node")
+
+/***/ }),
 /* 683 */,
 /* 684 */,
 /* 685 */,
@@ -28613,12 +28618,7 @@ function defaults(opts) {
 /* 874 */,
 /* 875 */,
 /* 876 */,
-/* 877 */
-/***/ (function(module, __unusedexports, __webpack_require__) {
-
-module.exports = require(__webpack_require__.ab + "binding-v4.0.6-node-v83-linux-x64/lzma_native.node")
-
-/***/ }),
+/* 877 */,
 /* 878 */,
 /* 879 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
@@ -28840,8 +28840,8 @@ var util = __webpack_require__(669);
 // node-pre-gyp magic
 var nodePreGyp = __webpack_require__(181);
 var path = __webpack_require__(622);
-var binding_path = __webpack_require__.ab + "/binding-v4.0.6-node-v83-linux-x64/lzma_native.node";
-var native = __webpack_require__(877);
+var binding_path = __webpack_require__.ab + "/binding-v4.0.6-node-v72-linux-x64/lzma_native.node";
+var native = __webpack_require__(682);
 
 Object.assign(exports, native);
 
