@@ -57,7 +57,7 @@ jobs:
         include:
           - os: ubuntu-latest
             file: target/release/mything
-            args: --better
+            args: --better --lzma
             strip: true
           - os: windows-latest
             file: target/release/mything.exe
