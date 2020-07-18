@@ -23,7 +23,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Download test file
-      run: curl -Ls https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-linux-amd64 -o testbinary
+      run: |
+        curl -Ls https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-linux-amd64 -o testbinary
+        chmod +x testbinary
     - name: Test Action
       uses: ./
       with:
