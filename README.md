@@ -87,6 +87,7 @@ from https://node-pre-gyp.addaleax.net/lzma-native/ and extract the prebuilt
 bindings into `node_modules/lzma-native`.
 For the same reason, we can't use ncc as that only supports a single
 platform but we need to support all platforms at once!
-- Make sure CHANGELOG.md is up-to-date.
+- Make sure `CHANGELOG.md` is up-to-date.
 - `git tag -sm <version> <version>`
 - `git push --tags`
+- Make a release at https://github.com/svenstaro/upx-action/releases/new and copy the `CHANGELOG.md` contents there.
