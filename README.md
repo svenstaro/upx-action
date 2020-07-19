@@ -81,6 +81,8 @@ jobs:
 
 ## Releasing and publishing
 
+The instructions below are only relevant to maintainers of this Action.
+
 - Sadly there's some manual work involved whenever lzma-native is updated.
   After running `npm run all`, it's necessary to fetch prebuilt binaries
 from https://node-pre-gyp.addaleax.net/lzma-native/ and extract the prebuilt
