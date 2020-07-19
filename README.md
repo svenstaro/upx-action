@@ -84,6 +84,6 @@ jobs:
 Sadly there's some manual work involved whenever lzma-native is updated.
 After running `npm run all`, it's necessary to fetch prebuilt binaries
 from https://node-pre-gyp.addaleax.net/lzma-native/ and extract the prebuilt
-bindings into `dist/`.
+bindings into `node_modules/lzma-native`.
 For the same reason, we can't use ncc as that only supports a single
 platform but we need to support all platforms at once!
