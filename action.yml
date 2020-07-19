@@ -17,4 +17,4 @@ inputs:
     description: 'Arguments to pass to strip'
 runs:
   using: 'node12'
-  main: 'dist/index.js'
+  main: 'lib/main.js'
