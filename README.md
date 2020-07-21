@@ -57,7 +57,7 @@ jobs:
         include:
           - os: ubuntu-latest
             file: target/release/mything
-            args: --better --lzma
+            args: --best --lzma
             strip: true
           - os: windows-latest
             file: target/release/mything.exe
@@ -65,7 +65,7 @@ jobs:
             strip: false
           - os: macos-latest
             file: target/release/mything
-            args: --better
+            args: --best
             strip: true
     steps:
     - uses: actions/checkout@v2
