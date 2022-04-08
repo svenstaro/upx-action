@@ -5,7 +5,8 @@ It runs on all operating systems types offered by GitHub.
 
 ## Input variables
 
-* `file`: The file you want to compress. It's compressed in-place. **required**
+* `files`: Newline-delimited list of path globs for files to compress. It's compressed in-place. *either files or file requred*
+* `file`: The file you want to compress. It's compressed in-place.  
 * `args`: Arguments to pass to UPX. *optional*
 * `strip`: Whether or not "strip" symbols from object file (default `true`). *optional*
 * `strip_args`: Arguments to pass to strip. *optional*
@@ -36,6 +37,12 @@ jobs:
       uses: svenstaro/upx-action@v2
       with:
         file: target/release/mything
+    - name: Compress binaries using glob
+      uses: svenstaro/upx-action@v2
+      with:
+        files: |
+          target/release/mything
+          target/release/*
 ```
 
 Complex example with more operating systems and inputs:

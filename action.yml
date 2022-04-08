@@ -8,6 +8,9 @@ inputs:
   file:
     description: 'Local file to pack'
     required: true
+  files:
+    description: 'Newline separated globs to pack'
+    required: false
   args:
     description: 'Arguments to pass to UPX'
   strip:
