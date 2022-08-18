@@ -26,7 +26,7 @@
   "author": "Sven-Hendrik Haase",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.9.1",
     "@actions/exec": "^1.0.4",
     "decompress-tarxz": "^3.0.0",
     "download": "^8.0.0"
