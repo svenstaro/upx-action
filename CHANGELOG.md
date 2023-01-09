@@ -1,4 +1,6 @@
 # Changelog
+## [2.1.0] - 2023-01-09
+- Update to node 16 and update all dependencies
 
 ## [2.0.1] - 2020-07-19
 - Fix important binary compatibility problem with node gyp lzma module
