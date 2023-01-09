@@ -11,14 +11,14 @@ async function downloadUpx(): Promise<string> {
   const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'upx-action-'))
   if (os.type() == 'Linux') {
     await download(
-      'https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz',
+      'https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-amd64_linux.tar.xz',
       tmpdir,
       {
         extract: true,
         plugins: [decompressTarxz()]
       }
     )
-    const upx_path = `${tmpdir}/upx-3.96-amd64_linux/upx`
+    const upx_path = `${tmpdir}/upx-4.0.1-amd64_linux/upx`
     fs.chmodSync(upx_path, '755')
     return upx_path
   } else if (os.type() == 'Darwin') {
@@ -26,13 +26,13 @@ async function downloadUpx(): Promise<string> {
     return 'upx'
   } else if (os.type() == 'Windows_NT') {
     await download(
-      'https://github.com/upx/upx/releases/download/v3.96/upx-3.96-win64.zip',
+      'https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-win64.zip',
       tmpdir,
       {
         extract: true
       }
     )
-    const upx_path = `${tmpdir}/upx-3.96-win64/upx.exe`
+    const upx_path = `${tmpdir}/upx-4.0.1-win64/upx.exe`
     return upx_path
   }
   throw 'unsupported OS'
