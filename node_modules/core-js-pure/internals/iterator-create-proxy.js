@@ -1,51 +1,85 @@
 'use strict';
-var path = require('../internals/path');
-var aFunction = require('../internals/a-function');
-var anObject = require('../internals/an-object');
+var call = require('../internals/function-call');
 var create = require('../internals/object-create');
 var createNonEnumerableProperty = require('../internals/create-non-enumerable-property');
-var redefineAll = require('../internals/redefine-all');
+var defineBuiltIns = require('../internals/define-built-ins');
 var wellKnownSymbol = require('../internals/well-known-symbol');
 var InternalStateModule = require('../internals/internal-state');
+var getMethod = require('../internals/get-method');
+var IteratorPrototype = require('../internals/iterators-core').IteratorPrototype;
+var createIterResultObject = require('../internals/create-iter-result-object');
+var iteratorClose = require('../internals/iterator-close');
 
+var ITERATOR_HELPER = 'IteratorHelper';
+var WRAP_FOR_VALID_ITERATOR = 'WrapForValidIterator';
 var setInternalState = InternalStateModule.set;
-var getInternalState = InternalStateModule.get;
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 
-var $return = function (value) {
-  var iterator = getInternalState(this).iterator;
-  var $$return = iterator['return'];
-  return $$return === undefined ? { done: true, value: value } : anObject($$return.call(iterator, value));
+var createIteratorProxyPrototype = function (IS_ITERATOR) {
+  var ITERATOR_PROXY = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
+
+  var getInternalState = InternalStateModule.getterFor(ITERATOR_PROXY);
+
+  var IteratorProxyPrototype = defineBuiltIns(create(IteratorPrototype), {
+    next: function next() {
+      var state = getInternalState(this);
+      // for simplification:
+      //   for `%WrapForValidIteratorPrototype%.next` our `nextHandler` returns `IterResultObject`
+      //   for `%IteratorHelperPrototype%.next` - just a value
+      if (IS_ITERATOR) return state.nextHandler();
+      try {
+        var result = state.done ? undefined : state.nextHandler();
+        return createIterResultObject(result, state.done);
+      } catch (error) {
+        state.done = true;
+        throw error;
+      }
+    },
+    'return': function () {
+      var state = getInternalState(this);
+      var iterator = state.iterator;
+      state.done = true;
+      if (IS_ITERATOR) {
+        var returnMethod = getMethod(iterator, 'return');
+        return returnMethod ? call(returnMethod, iterator) : createIterResultObject(undefined, true);
+      }
+      if (state.inner) try {
+        iteratorClose(state.inner.iterator, 'return');
+      } catch (error) {
+        return iteratorClose(iterator, 'throw', error);
+      }
+      iteratorClose(iterator, 'return');
+      return createIterResultObject(undefined, true);
+    }
+  });
+
+  if (!IS_ITERATOR) {
+    createNonEnumerableProperty(IteratorProxyPrototype, TO_STRING_TAG, 'Iterator Helper');
+  }
+
+  return IteratorProxyPrototype;
 };
 
-var $throw = function (value) {
-  var iterator = getInternalState(this).iterator;
-  var $$throw = iterator['throw'];
-  if ($$throw === undefined) throw value;
-  return $$throw.call(iterator, value);
-};
+var IteratorHelperPrototype = createIteratorProxyPrototype(false);
+var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
 
 module.exports = function (nextHandler, IS_ITERATOR) {
-  var IteratorProxy = function Iterator(state) {
-    state.next = aFunction(state.iterator.next);
+  var ITERATOR_PROXY = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
+
+  var IteratorProxy = function Iterator(record, state) {
+    if (state) {
+      state.iterator = record.iterator;
+      state.next = record.next;
+    } else state = record;
+    state.type = ITERATOR_PROXY;
+    state.nextHandler = nextHandler;
+    state.counter = 0;
     state.done = false;
     setInternalState(this, state);
   };
 
-  IteratorProxy.prototype = redefineAll(create(path.Iterator.prototype), {
-    next: function next() {
-      var state = getInternalState(this);
-      var result = state.done ? undefined : nextHandler.apply(state, arguments);
-      return { done: state.done, value: result };
-    },
-    'return': $return,
-    'throw': $throw
-  });
-
-  if (!IS_ITERATOR) {
-    createNonEnumerableProperty(IteratorProxy.prototype, TO_STRING_TAG, 'Generator');
-  }
+  IteratorProxy.prototype = IS_ITERATOR ? WrapForValidIteratorPrototype : IteratorHelperPrototype;
 
   return IteratorProxy;
 };

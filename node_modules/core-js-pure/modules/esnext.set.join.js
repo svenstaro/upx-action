@@ -1,19 +1,23 @@
 'use strict';
 var $ = require('../internals/export');
-var IS_PURE = require('../internals/is-pure');
-var anObject = require('../internals/an-object');
-var getSetIterator = require('../internals/get-set-iterator');
-var iterate = require('../internals/iterate');
+var uncurryThis = require('../internals/function-uncurry-this');
+var aSet = require('../internals/a-set');
+var iterate = require('../internals/set-iterate');
+var toString = require('../internals/to-string');
+
+var arrayJoin = uncurryThis([].join);
+var push = uncurryThis([].push);
 
 // `Set.prototype.join` method
 // https://github.com/tc39/proposal-collection-methods
-$({ target: 'Set', proto: true, real: true, forced: IS_PURE }, {
+$({ target: 'Set', proto: true, real: true, forced: true }, {
   join: function join(separator) {
-    var set = anObject(this);
-    var iterator = getSetIterator(set);
-    var sep = separator === undefined ? ',' : String(separator);
-    var result = [];
-    iterate(iterator, result.push, result, false, true);
-    return result.join(sep);
+    var set = aSet(this);
+    var sep = separator === undefined ? ',' : toString(separator);
+    var array = [];
+    iterate(set, function (value) {
+      push(array, value);
+    });
+    return arrayJoin(array, sep);
   }
 });

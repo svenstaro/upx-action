@@ -59,7 +59,7 @@ export async function run(): Promise<void> {
 
     core.info('🏃 Running UPX...')
     await exec.exec(`${upx_path} ${args} ${file}`)
-  } catch (error) {
+  } catch (error: any) {
     core.setFailed(error.message)
     throw error
   }

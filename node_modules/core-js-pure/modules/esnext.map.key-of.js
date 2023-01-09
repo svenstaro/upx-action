@@ -1,16 +1,15 @@
 'use strict';
 var $ = require('../internals/export');
-var IS_PURE = require('../internals/is-pure');
-var anObject = require('../internals/an-object');
-var getMapIterator = require('../internals/get-map-iterator');
-var iterate = require('../internals/iterate');
+var aMap = require('../internals/a-map');
+var iterate = require('../internals/map-iterate');
 
-// `Map.prototype.includes` method
+// `Map.prototype.keyOf` method
 // https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: IS_PURE }, {
+$({ target: 'Map', proto: true, real: true, forced: true }, {
   keyOf: function keyOf(searchElement) {
-    return iterate(getMapIterator(anObject(this)), function (key, value) {
-      if (value === searchElement) return iterate.stop(key);
-    }, undefined, true, true).result;
+    var result = iterate(aMap(this), function (value, key) {
+      if (value === searchElement) return { key: key };
+    }, true);
+    return result && result.key;
   }
 });

@@ -1,26 +1,23 @@
 'use strict';
 var $ = require('../internals/export');
-var IS_PURE = require('../internals/is-pure');
-var getBuiltIn = require('../internals/get-built-in');
-var anObject = require('../internals/an-object');
-var aFunction = require('../internals/a-function');
 var bind = require('../internals/function-bind-context');
-var speciesConstructor = require('../internals/species-constructor');
-var getMapIterator = require('../internals/get-map-iterator');
-var iterate = require('../internals/iterate');
+var aMap = require('../internals/a-map');
+var MapHelpers = require('../internals/map-helpers');
+var iterate = require('../internals/map-iterate');
+
+var Map = MapHelpers.Map;
+var set = MapHelpers.set;
 
 // `Map.prototype.mapKeys` method
 // https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: IS_PURE }, {
+$({ target: 'Map', proto: true, real: true, forced: true }, {
   mapKeys: function mapKeys(callbackfn /* , thisArg */) {
-    var map = anObject(this);
-    var iterator = getMapIterator(map);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined, 3);
-    var newMap = new (speciesConstructor(map, getBuiltIn('Map')))();
-    var setter = aFunction(newMap.set);
-    iterate(iterator, function (key, value) {
-      setter.call(newMap, boundFunction(value, key, map), value);
-    }, undefined, true, true);
+    var map = aMap(this);
+    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+    var newMap = new Map();
+    iterate(map, function (value, key) {
+      set(newMap, boundFunction(value, key, map), value);
+    });
     return newMap;
   }
 });

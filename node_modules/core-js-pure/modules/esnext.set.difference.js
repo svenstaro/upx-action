@@ -1,22 +1,14 @@
 'use strict';
 var $ = require('../internals/export');
-var IS_PURE = require('../internals/is-pure');
-var getBuiltIn = require('../internals/get-built-in');
-var anObject = require('../internals/an-object');
-var aFunction = require('../internals/a-function');
-var speciesConstructor = require('../internals/species-constructor');
-var iterate = require('../internals/iterate');
+var call = require('../internals/function-call');
+var toSetLike = require('../internals/to-set-like');
+var $difference = require('../internals/set-difference');
 
 // `Set.prototype.difference` method
 // https://github.com/tc39/proposal-set-methods
-$({ target: 'Set', proto: true, real: true, forced: IS_PURE }, {
-  difference: function difference(iterable) {
-    var set = anObject(this);
-    var newSet = new (speciesConstructor(set, getBuiltIn('Set')))(set);
-    var remover = aFunction(newSet['delete']);
-    iterate(iterable, function (value) {
-      remover.call(newSet, value);
-    });
-    return newSet;
+// TODO: Obsolete version, remove from `core-js@4`
+$({ target: 'Set', proto: true, real: true, forced: true }, {
+  difference: function difference(other) {
+    return call($difference, this, toSetLike(other));
   }
 });

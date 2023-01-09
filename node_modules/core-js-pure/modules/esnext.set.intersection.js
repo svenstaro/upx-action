@@ -1,23 +1,14 @@
 'use strict';
 var $ = require('../internals/export');
-var IS_PURE = require('../internals/is-pure');
-var getBuiltIn = require('../internals/get-built-in');
-var anObject = require('../internals/an-object');
-var aFunction = require('../internals/a-function');
-var speciesConstructor = require('../internals/species-constructor');
-var iterate = require('../internals/iterate');
+var call = require('../internals/function-call');
+var toSetLike = require('../internals/to-set-like');
+var $intersection = require('../internals/set-intersection');
 
 // `Set.prototype.intersection` method
 // https://github.com/tc39/proposal-set-methods
-$({ target: 'Set', proto: true, real: true, forced: IS_PURE }, {
-  intersection: function intersection(iterable) {
-    var set = anObject(this);
-    var newSet = new (speciesConstructor(set, getBuiltIn('Set')))();
-    var hasCheck = aFunction(set.has);
-    var adder = aFunction(newSet.add);
-    iterate(iterable, function (value) {
-      if (hasCheck.call(set, value)) adder.call(newSet, value);
-    });
-    return newSet;
+// TODO: Obsolete version, remove from `core-js@4`
+$({ target: 'Set', proto: true, real: true, forced: true }, {
+  intersection: function intersection(other) {
+    return call($intersection, this, toSetLike(other));
   }
 });

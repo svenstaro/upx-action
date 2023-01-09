@@ -1,7 +1,6 @@
-var NATIVE_SYMBOL = require('../internals/native-symbol');
+/* eslint-disable es/no-symbol -- required for testing */
+var NATIVE_SYMBOL = require('../internals/symbol-constructor-detection');
 
 module.exports = NATIVE_SYMBOL
-  // eslint-disable-next-line no-undef
   && !Symbol.sham
-  // eslint-disable-next-line no-undef
   && typeof Symbol.iterator == 'symbol';

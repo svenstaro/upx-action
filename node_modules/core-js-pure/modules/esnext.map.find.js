@@ -1,20 +1,18 @@
 'use strict';
 var $ = require('../internals/export');
-var IS_PURE = require('../internals/is-pure');
-var anObject = require('../internals/an-object');
 var bind = require('../internals/function-bind-context');
-var getMapIterator = require('../internals/get-map-iterator');
-var iterate = require('../internals/iterate');
+var aMap = require('../internals/a-map');
+var iterate = require('../internals/map-iterate');
 
 // `Map.prototype.find` method
 // https://github.com/tc39/proposal-collection-methods
-$({ target: 'Map', proto: true, real: true, forced: IS_PURE }, {
+$({ target: 'Map', proto: true, real: true, forced: true }, {
   find: function find(callbackfn /* , thisArg */) {
-    var map = anObject(this);
-    var iterator = getMapIterator(map);
-    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined, 3);
-    return iterate(iterator, function (key, value) {
-      if (boundFunction(value, key, map)) return iterate.stop(value);
-    }, undefined, true, true).result;
+    var map = aMap(this);
+    var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+    var result = iterate(map, function (value, key) {
+      if (boundFunction(value, key, map)) return { value: value };
+    }, true);
+    return result && result.value;
   }
 });
