@@ -1,4 +1,4 @@
-# Strip and run UPX on executables [![GitHub Actions Workflow](https://github.com/svenstaro/upx-action/workflows/PR%20Checks/badge.svg)](https://github.com/svenstaro/upx-action/actions)
+# Strip and run UPX on executables [![GitHub Actions Workflow](https://github.com/svenstaro/upx-action/actions/workflows/ci.yml/badge.svg)](https://github.com/svenstaro/upx-action/actions/workflows/ci.yml)
 
 This action allows you to select an executable file which is then stripped and run through [upx](https://upx.github.io/) which drastically decreases the size of those executables.
 It runs on all operating systems types offered by GitHub.
