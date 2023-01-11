@@ -2,38 +2,38 @@ import * as fs from 'fs'
 import * as os from 'os'
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
-import download from 'download'
 // @ts-ignore
-import decompressTarxz from 'decompress-tarxz'
 import * as path from 'path'
 
 async function downloadUpx(): Promise<string> {
+  const upx_version = '4.0.1'
   const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'upx-action-'))
   if (os.type() == 'Linux') {
-    await download(
-      'https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-amd64_linux.tar.xz',
-      tmpdir,
-      {
-        extract: true,
-        plugins: [decompressTarxz()]
-      }
+    await exec.exec(
+      'curl',
+      [
+        '-LO',
+        `https://github.com/upx/upx/releases/download/v${upx_version}/upx-${upx_version}-amd64_linux.tar.xz`
+      ],
+      {cwd: tmpdir}
     )
-    const upx_path = `${tmpdir}/upx-4.0.1-amd64_linux/upx`
-    fs.chmodSync(upx_path, '755')
-    return upx_path
+    await exec.exec(
+      'tar',
+      [
+        'xvJf',
+        `upx-${upx_version}-amd64_linux.tar.xz`,
+        '--strip-components=1',
+        `upx-${upx_version}-amd64_linux/upx`
+      ],
+      {cwd: tmpdir}
+    )
+    return `${tmpdir}/upx`
   } else if (os.type() == 'Darwin') {
     await exec.exec('brew install upx')
     return 'upx'
   } else if (os.type() == 'Windows_NT') {
-    await download(
-      'https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-win64.zip',
-      tmpdir,
-      {
-        extract: true
-      }
-    )
-    const upx_path = `${tmpdir}/upx-4.0.1-win64/upx.exe`
-    return upx_path
+    await exec.exec('choco install upx')
+    return 'upx'
   }
   throw 'unsupported OS'
 }
@@ -46,18 +46,18 @@ export async function run(): Promise<void> {
     const strip_args = core.getInput('strip_args')
 
     if (!fs.existsSync(file)) {
-      core.setFailed(`⛔ File ${file} wasn't found.`)
+      core.setFailed(`File ${file} wasn't found.`)
     }
 
     if (/true/i.test(strip)) {
-      core.info('🏃 Running strip...')
+      core.info('Running strip...')
       await exec.exec(`strip ${strip_args} ${file}`)
     }
 
-    core.info('⬇️  Downloading UPX...')
+    core.info('Downloading UPX...')
     const upx_path = await downloadUpx()
 
-    core.info('🏃 Running UPX...')
+    core.info('Running UPX...')
     await exec.exec(`${upx_path} ${args} ${file}`)
   } catch (error: any) {
     core.setFailed(error.message)

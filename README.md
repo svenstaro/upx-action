@@ -29,7 +29,7 @@ jobs:
     name: Publish binaries
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Build
       run: cargo build --release --locked
     - name: Compress binaries
@@ -68,7 +68,7 @@ jobs:
             args: --best
             strip: true
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Build
       run: cargo build --release --locked
     - name: Compress binaries
