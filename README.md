@@ -81,15 +81,12 @@ jobs:
 
 ## Releasing and publishing
 
-The instructions below are only relevant to maintainers of this Action.
+To release this Action:
 
-- Sadly there's some manual work involved whenever lzma-native is updated.
-  After running `npm run all`, it's necessary to fetch prebuilt binaries
-from https://node-pre-gyp.addaleax.net/lzma-native/ and extract the prebuilt
-bindings into `node_modules/lzma-native`.
-For the same reason, we can't use ncc as that only supports a single
-platform but we need to support all platforms at once!
-- Make sure `CHANGELOG.md` is up-to-date.
+- Bump version in `package.json`
+- Create `CHANGELOG.md` entry
+- `npm run all`
+- `git commit -am <version>`
 - `git tag -sm <version> <version>`
-- `git push --tags`
-- Make a release at https://github.com/svenstaro/upx-action/releases/new and copy the `CHANGELOG.md` contents there.
+- `git push --follow-tags`
+- Go to https://github.com/svenstaro/upx-action/releases and publish the new version
