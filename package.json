@@ -27,9 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@actions/exec": "^1.1.1",
-    "decompress-tarxz": "^3.0.0",
-    "download": "^8.0.0"
+    "@actions/exec": "^1.1.1"
   },
   "devDependencies": {
     "@types/download": "^8.0.2",
