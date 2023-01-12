@@ -8,6 +8,7 @@ inputs:
   file:
     description: 'Local file to pack (deprecated, prefer `files`)'
     required: true
+    deprecationMessage: 'Prefer "files" supporting globs instead of "file"'
   files:
     description: 'Newline separated globs to pack'
     required: false

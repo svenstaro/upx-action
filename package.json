@@ -32,7 +32,6 @@
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
-    "@types/download": "^8.0.2",
     "@types/jest": "^29",
     "@types/node": "^16",
     "@typescript-eslint/parser": "^5.48.0",
