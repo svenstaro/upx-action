@@ -2,7 +2,6 @@ import * as fs from 'fs'
 import * as os from 'os'
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
-import download from 'download'
 import * as glob from 'glob'
 // @ts-ignore
 import * as path from 'path'
@@ -47,7 +46,7 @@ function resolve(input: string): string[] {
     .filter(line => line)
     .reduce((paths: string[], pattern: string): string[] => {
       return paths.concat(
-        glob.sync(pattern).filter(path => fs.lstatSync(path).isFile())
+        glob.sync(pattern).filter(next => fs.lstatSync(next).isFile())
       )
     }, [])
 }
@@ -55,7 +54,8 @@ function resolve(input: string): string[] {
 export async function run(): Promise<void> {
   try {
     const paths = resolve(
-      core.getInput('files', {required: false}) || core.getInput('file', {required: true})
+      core.getInput('files', {required: false}) ||
+        core.getInput('file', {required: true})
     )
 
     const args = core.getInput('args')
