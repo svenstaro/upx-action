@@ -6,7 +6,7 @@ It runs on all operating systems types offered by GitHub.
 ## Input variables
 
 * `files`: Newline-delimited list of path globs for files to compress. It's compressed in-place. *either files or file requred*
-* `file`: The file you want to compress. It's compressed in-place.  
+* `file`: The file you want to compress. It's compressed in-place. *Deprecated, prefer `files`*.
 * `args`: Arguments to pass to UPX. *optional*
 * `strip`: Whether or not "strip" symbols from object file (default `true`). *optional*
 * `strip_args`: Arguments to pass to strip. *optional*
