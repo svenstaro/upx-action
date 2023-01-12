@@ -6,7 +6,7 @@ branding:
   color: blue
 inputs:
   file:
-    description: 'Local file to pack'
+    description: 'Local file to pack (deprecated, prefer `files`)'
     required: true
   files:
     description: 'Newline separated globs to pack'
