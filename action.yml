@@ -19,5 +19,5 @@ inputs:
   strip_args:
     description: 'Arguments to pass to strip'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'lib/main.js'

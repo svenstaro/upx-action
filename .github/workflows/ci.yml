@@ -2,27 +2,29 @@ name: "CI"
 on: [pull_request, push]
 
 jobs:
-  build: # make sure build/ci work properly
+  # make sure build/ci work properly
+  build:
     name: CI on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - run: |
         rm -r node_modules
         npm install
         npm run all
 
-  test: # make sure the action works on a clean machine without building
+  # make sure the action works on a clean machine without building
+  test:
     name: E2E test on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Download test file
       run: |
         curl -Ls https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-linux-amd64 -o testbinary
