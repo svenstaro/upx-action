@@ -11,7 +11,8 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
     - uses: actions/checkout@v3
-    - run: |
+    - name: Test Action
+      run: |
         rm -r node_modules
         npm install
         npm run all
