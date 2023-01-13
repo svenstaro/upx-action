@@ -36,10 +36,6 @@ jobs:
     - name: Compress binaries
       uses: svenstaro/upx-action@v2
       with:
-        file: target/release/mything
-    - name: Compress binaries using glob
-      uses: svenstaro/upx-action@v2
-      with:
         files: |
           target/release/mything
           target/release/*
@@ -63,15 +59,18 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            file: target/release/mything
+            files: |
+                target/release/mything
             args: --best --lzma
             strip: true
           - os: windows-latest
-            file: target/release/mything.exe
+            files: |
+                target/release/mything.exe
             args: -9
             strip: false
           - os: macos-latest
-            file: target/release/mything
+            files: |
+                target/release/mything
             args: --best
             strip: true
     steps:
@@ -81,7 +80,8 @@ jobs:
     - name: Compress binaries
       uses: svenstaro/upx-action@v2
       with:
-        file: ${{ matrix.file }}
+        files: |
+            ${{ matrix.file }}
         args: ${{ matrix.args }}
         strip: ${{ matrix.strip }}
 ```
