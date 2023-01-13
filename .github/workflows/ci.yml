@@ -29,8 +29,17 @@ jobs:
       run: |
         curl -Ls https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-linux-amd64 -o testbinary
         chmod +x testbinary
+        cp testbinary testbinary.glob1
+        cp testbinary testbinary.glob2
     - name: Test Action
       uses: ./
       with:
         file: testbinary
+        args: --best --lzma
+
+    - name: Test Action with glob
+      uses: ./
+      with:
+        files: |
+          *.glob*
         args: --best --lzma
