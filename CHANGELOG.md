@@ -1,4 +1,7 @@
 # Changelog
+## [2.2.0] - 2023-01-13
+- Add glob support [#23](https://github.com/svenstaro/upx-action/pull/23) (thanks @lanwen)
+
 ## [2.1.0] - 2023-01-11
 - Update to node 16 and update all dependencies
 
