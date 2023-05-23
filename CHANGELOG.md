@@ -1,4 +1,8 @@
 # Changelog
+## [2.3.0] - 2023-05-23
+- Update dependencies
+- Update upx to 4.0.2
+
 ## [2.2.0] - 2023-01-13
 - Add glob support [#23](https://github.com/svenstaro/upx-action/pull/23) (thanks @lanwen)
 
