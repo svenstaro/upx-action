@@ -30,10 +30,10 @@ async function downloadUpx(): Promise<string> {
     )
     return `${tmpdir}/upx`
   } else if (os.type() == 'Darwin') {
-    await exec.exec('brew install upx')
+    await exec.exec(`brew install upx`)
     return 'upx'
   } else if (os.type() == 'Windows_NT') {
-    await exec.exec('choco install upx')
+    await exec.exec(`choco install upx --no-progress --version=${upx_version}`)
     return 'upx'
   }
   throw 'unsupported OS'
