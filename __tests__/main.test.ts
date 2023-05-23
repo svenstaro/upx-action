@@ -17,7 +17,7 @@ beforeAll(async () => {
       {cwd: tmpdir}
     )
     fs.chmodSync(`${tmpdir}/proxyboi-linux-amd64`, '755')
-    process.env['INPUT_FILE'] = `${tmpdir}/proxyboi-linux-amd64`
+    process.env['INPUT_FILES'] = `${tmpdir}/proxyboi-linux-amd64`
   } else if (os.type() == 'Darwin') {
     await exec.exec(
       'curl',
@@ -28,7 +28,7 @@ beforeAll(async () => {
       {cwd: tmpdir}
     )
     fs.chmodSync(`${tmpdir}/proxyboi-macos-amd64`, '755')
-    process.env['INPUT_FILE'] = `${tmpdir}/proxyboi-macos-amd64`
+    process.env['INPUT_FILES'] = `${tmpdir}/proxyboi-macos-amd64`
   } else if (os.type() == 'Windows_NT') {
     await exec.exec(
       'curl',
@@ -38,13 +38,13 @@ beforeAll(async () => {
       ],
       {cwd: tmpdir}
     )
-    process.env['INPUT_FILE'] = `${tmpdir}/proxyboi-windows-amd64.exe`
+    process.env['INPUT_FILES'] = `${tmpdir}/proxyboi-windows-amd64.exe`
   }
 })
 
 describe('UPX Action', () => {
   it('can compress stuff', async () => {
-    const file_path = process.env['INPUT_FILE'] as string
+    const file_path = process.env['INPUT_FILES'] as string
     const old_size = fs.statSync(file_path).size
     await run()
     const new_size = fs.statSync(file_path).size
