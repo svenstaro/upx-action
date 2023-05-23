@@ -92,7 +92,8 @@ function run() {
             const args = core.getInput('args');
             const strip = core.getInput('strip') || 'true';
             const strip_args = core.getInput('strip_args');
-            if (!paths) {
+            if (!paths || paths.length == 0) {
+                core.error(`Path input: ${paths}`);
                 core.setFailed(`No files found.`);
             }
             if (/true/i.test(strip)) {
