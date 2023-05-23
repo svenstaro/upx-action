@@ -70,7 +70,9 @@ export async function run(): Promise<void> {
       core.info('Running strip...')
 
       for (const file of paths) {
-        await exec.exec(`strip ${strip_args} ${file}`)
+        const output = await exec.getExecOutput(`strip ${strip_args} ${file}`)
+        core.debug(output.stdout)
+        core.debug(output.stderr)
       }
     }
 
@@ -80,7 +82,9 @@ export async function run(): Promise<void> {
     core.info('Running UPX...')
 
     for (const file of paths) {
-      await exec.exec(`${upx_path} ${args} ${file}`)
+      const output = await exec.getExecOutput(`${upx_path} ${args} ${file}`)
+      core.debug(output.stdout)
+      core.debug(output.stderr)
     }
   } catch (error: any) {
     core.setFailed(error.message)
