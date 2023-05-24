@@ -13,7 +13,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Test Action
       run: |
-        rm -r node_modules
         npm install
         npm run all
 
@@ -30,12 +29,15 @@ jobs:
       run: |
         curl -Ls https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-linux-amd64 -o testbinary
         chmod +x testbinary
+        cp testbinary testbinary2
         cp testbinary testbinary.glob1
         cp testbinary testbinary.glob2
     - name: Test Action
       uses: ./
       with:
-        file: testbinary
+        files: |
+          testbinary
+          testbinary2
         args: --best --lzma
 
     - name: Test Action with glob

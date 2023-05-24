@@ -7,7 +7,7 @@ import * as glob from 'glob'
 import * as path from 'path'
 
 async function downloadUpx(): Promise<string> {
-  const upx_version = '4.0.1'
+  const upx_version = '4.0.2'
   const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'upx-action-'))
   if (os.type() == 'Linux') {
     await exec.exec(
@@ -30,10 +30,10 @@ async function downloadUpx(): Promise<string> {
     )
     return `${tmpdir}/upx`
   } else if (os.type() == 'Darwin') {
-    await exec.exec('brew install upx')
+    await exec.exec(`brew install upx`)
     return 'upx'
   } else if (os.type() == 'Windows_NT') {
-    await exec.exec('choco install upx')
+    await exec.exec(`choco install upx --no-progress --version=${upx_version}`)
     return 'upx'
   }
   throw 'unsupported OS'
@@ -62,7 +62,8 @@ export async function run(): Promise<void> {
     const strip = core.getInput('strip') || 'true'
     const strip_args = core.getInput('strip_args')
 
-    if (!paths) {
+    if (!paths || paths.length == 0) {
+      core.error(`Path input: ${paths}`)
       core.setFailed(`No files found.`)
     }
 
@@ -70,7 +71,9 @@ export async function run(): Promise<void> {
       core.info('Running strip...')
 
       for (const file of paths) {
-        await exec.exec(`strip ${strip_args} ${file}`)
+        const output = await exec.getExecOutput(`strip ${strip_args} ${file}`)
+        core.debug(output.stdout)
+        core.debug(output.stderr)
       }
     }
 
@@ -80,7 +83,9 @@ export async function run(): Promise<void> {
     core.info('Running UPX...')
 
     for (const file of paths) {
-      await exec.exec(`${upx_path} ${args} ${file}`)
+      const output = await exec.getExecOutput(`${upx_path} ${args} ${file}`)
+      core.debug(output.stdout)
+      core.debug(output.stderr)
     }
   } catch (error: any) {
     core.setFailed(error.message)
