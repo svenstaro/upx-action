@@ -49,7 +49,7 @@ const glob = __importStar(__nccwpck_require__(8211));
 const path = __importStar(__nccwpck_require__(1017));
 function downloadUpx() {
     return __awaiter(this, void 0, void 0, function* () {
-        const upx_version = '4.0.2';
+        const upx_version = '4.2.2';
         const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'upx-action-'));
         if (os.type() == 'Linux') {
             yield exec.exec('curl', [

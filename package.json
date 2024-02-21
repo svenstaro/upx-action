@@ -1,6 +1,6 @@
 {
   "name": "upx-action",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "private": true,
   "description": "Strip and run UPX on executables",
   "main": "lib/main.js",
