@@ -7,7 +7,7 @@ import * as glob from 'glob'
 import * as path from 'path'
 
 async function downloadUpx(): Promise<string> {
-  const upx_version = '4.0.2'
+  const upx_version = '4.2.2'
   const tmpdir = fs.mkdtempSync(path.join(os.tmpdir(), 'upx-action-'))
   if (os.type() == 'Linux') {
     await exec.exec(
