@@ -1,4 +1,7 @@
 # Changelog
+## [2.4.0] - 2024-02-21
+- Update to node 20 and update all dependencies
+
 ## [2.3.0] - 2023-05-23
 - Update dependencies
 - Update upx to 4.0.2
