@@ -1,5 +1,5 @@
 # Changelog
-## 2.5.0
+## 2.5.0 - 2026-03-16
 - Update to node 24 and update all dependencies
 
 ## [2.4.1] - 2024-02-21
