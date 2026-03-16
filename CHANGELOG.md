@@ -1,4 +1,7 @@
 # Changelog
+## 2.5.0
+- Update to node 24 and update all dependencies
+
 ## [2.4.1] - 2024-02-21
 - Update upx to 4.2.2
 

@@ -1,10 +1,10 @@
 import * as fs from 'fs'
 import * as os from 'os'
 import * as exec from '@actions/exec'
-import {run} from '../src/action'
+import { run } from '../src/action'
 
 beforeAll(async () => {
-  fs.mkdirSync('test-data', {recursive: true})
+  fs.mkdirSync('test-data', { recursive: true })
   if (os.type() == 'Linux') {
     await exec.exec(
       'curl',
@@ -12,7 +12,7 @@ beforeAll(async () => {
         '-LO',
         'https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-linux-amd64'
       ],
-      {cwd: 'test-data'}
+      { cwd: 'test-data' }
     )
     fs.chmodSync('test-data/proxyboi-linux-amd64', '755')
     process.env['INPUT_FILES'] = 'test-data/proxyboi-linux-amd64'
@@ -23,7 +23,7 @@ beforeAll(async () => {
         '-LO',
         'https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-macos-amd64'
       ],
-      {cwd: 'test-data'}
+      { cwd: 'test-data' }
     )
     fs.chmodSync('test-data/proxyboi-macos-amd64', '755')
     process.env['INPUT_FILES'] = 'test-data/proxyboi-macos-amd64'
@@ -34,7 +34,7 @@ beforeAll(async () => {
         '-LO',
         'https://github.com/svenstaro/proxyboi/releases/download/0.1.5/proxyboi-windows-amd64.exe'
       ],
-      {cwd: 'test-data'}
+      { cwd: 'test-data' }
     )
     process.env['INPUT_FILES'] = 'test-data/proxyboi-windows-amd64.exe'
   }
