@@ -1,4 +1,7 @@
 # Changelog
+## 2.5.2 - 2026-03-16
+- Actually fix last botched release
+
 ## 2.5.1 - 2026-03-16
 - Fix the last botched release
 

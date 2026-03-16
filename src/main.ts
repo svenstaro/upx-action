@@ -55,7 +55,7 @@ export async function run(): Promise<void> {
   try {
     const paths = resolve(
       core.getInput('files', {required: false}) ||
-        core.getInput('file', {required: true})
+        core.getInput('file', {required: false})
     )
 
     const args = core.getInput('args')
@@ -92,3 +92,5 @@ export async function run(): Promise<void> {
     throw error
   }
 }
+
+run()

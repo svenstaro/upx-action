@@ -30992,7 +30992,7 @@ function resolve(input) {
 async function run() {
     try {
         const paths = resolve(getInput('files', { required: false }) ||
-            getInput('file', { required: true }));
+            getInput('file', { required: false }));
         const args = getInput('args');
         const strip = getInput('strip') || 'true';
         const strip_args = getInput('strip_args');
@@ -31022,6 +31022,7 @@ async function run() {
         throw error;
     }
 }
+run();
 
 var __webpack_exports__run = __webpack_exports__.e;
 export { __webpack_exports__run as run };
