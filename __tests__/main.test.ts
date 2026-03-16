@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import * as os from 'os'
 import * as exec from '@actions/exec'
-import {run} from '../src/action'
+import {run} from '../src/main'
 
 beforeAll(async () => {
   fs.mkdirSync('test-data', {recursive: true})
