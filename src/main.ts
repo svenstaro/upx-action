@@ -39,7 +39,7 @@ async function downloadUpx(): Promise<string> {
   throw 'unsupported OS'
 }
 
-function resolve(input: string): string[] {
+function resolve_files(input: string): string[] {
   return input
     .split(/\r?\n/)
     .map(line => line.trim())
@@ -53,10 +53,7 @@ function resolve(input: string): string[] {
 
 export async function run(): Promise<void> {
   try {
-    const paths = resolve(
-      core.getInput('files', {required: false}) ||
-        core.getInput('file', {required: false})
-    )
+    const paths = resolve_files(core.getInput('files', {required: true}))
 
     const args = core.getInput('args')
     const strip = core.getInput('strip') || 'true'
@@ -93,4 +90,7 @@ export async function run(): Promise<void> {
   }
 }
 
-run()
+const isMainModule = process.argv[1] && process.argv[1].endsWith('main.js')
+if (isMainModule) {
+  run()
+}

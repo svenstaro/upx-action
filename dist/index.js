@@ -30980,7 +30980,7 @@ async function downloadUpx() {
     }
     throw 'unsupported OS';
 }
-function resolve(input) {
+function resolve_files(input) {
     return input
         .split(/\r?\n/)
         .map(line => line.trim())
@@ -30991,8 +30991,7 @@ function resolve(input) {
 }
 async function run() {
     try {
-        const paths = resolve(getInput('files', { required: false }) ||
-            getInput('file', { required: false }));
+        const paths = resolve_files(getInput('files', { required: true }));
         const args = getInput('args');
         const strip = getInput('strip') || 'true';
         const strip_args = getInput('strip_args');
@@ -31022,7 +31021,10 @@ async function run() {
         throw error;
     }
 }
-run();
+const isMainModule = process.argv[1] && process.argv[1].endsWith('main.js');
+if (isMainModule) {
+    run();
+}
 
 var __webpack_exports__run = __webpack_exports__.e;
 export { __webpack_exports__run as run };
