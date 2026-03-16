@@ -30955,7 +30955,7 @@ globstar while`,t,d,e,f,m),this.matchOne(t.slice(d),e.slice(f),s))return this.de
 // @ts-ignore
 
 async function downloadUpx() {
-    const upx_version = '4.2.2';
+    const upx_version = '5.1.1';
     const tmpdir = external_fs_namespaceObject.mkdtempSync(external_path_namespaceObject.join(external_os_namespaceObject.tmpdir(), 'upx-action-'));
     if (external_os_namespaceObject.type() == 'Linux') {
         await exec_exec('curl', [
