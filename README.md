@@ -1,3 +1,7 @@
+# Project unmaintained
+
+Please switch to [another upx action](https://github.com/marketplace?query=upx&type=actions).
+
 # Strip and run UPX on executables [![GitHub Actions Workflow](https://github.com/svenstaro/upx-action/actions/workflows/ci.yml/badge.svg)](https://github.com/svenstaro/upx-action/actions/workflows/ci.yml)
 
 This action allows you to select an executable file which is then stripped and run through [upx](https://upx.github.io/) which drastically decreases the size of those executables.
