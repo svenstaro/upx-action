@@ -1,4 +1,7 @@
 # Changelog
+## 2.5.1 - 2026-03-16
+- Fix the last botched release
+
 ## 2.5.0 - 2026-03-16
 - Update to node 24 and update all dependencies
 
