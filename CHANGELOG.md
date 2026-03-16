@@ -1,6 +1,7 @@
 # Changelog
 ## 3.0.0 - 2026-03-16
 - Remove deprecated `file` arguments - use `files`
+- Upgrade to upx 5.1.1
 
 ## 2.5.2 - 2026-03-16
 - Actually fix last botched release
